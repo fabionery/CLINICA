@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	
+	<artifactId>clinicaanimal-ear</artifactId>
+	<packaging>ear</packaging>
+	<name>Clinica Animal - EAR</name>
+	
+	<parent>
+		<groupId>br.com.clinicaanimal</groupId>
+		<artifactId>clinicaanimal</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	
+	<dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>clinicaanimal-core</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+        </dependency>
+        
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>clinicaanimal-war</artifactId>
+            <version>${project.version}</version>
+            <type>war</type>
+        </dependency>
+    </dependencies>
+	
+	<build>
+        <finalName>clinicaanimal-ear</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-ear-plugin</artifactId>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                    <modules>
+                    	<jarModule>
+                            <groupId>${project.groupId}</groupId>
+                            <artifactId>clinicaanimal-core</artifactId>
+                            <bundleFileName>clinicaanimal-core.jar</bundleFileName>
+                        </jarModule>
+                        <webModule>
+                            <groupId>${project.groupId}</groupId>
+                            <artifactId>clinicaanimal-war</artifactId>
+                            <bundleFileName>clinicaanimal-war.war</bundleFileName>
+                            <contextRoot>/clinicaanimal</contextRoot>
+                            <unpack>false</unpack>
+                        </webModule>
+                    </modules>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

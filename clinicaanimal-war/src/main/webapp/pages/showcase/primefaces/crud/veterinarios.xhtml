@@ -1,0 +1,52 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	template="/WEB-INF/layout/template.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:a="http://java.sun.com/jsf/composite/components">
+
+	<ui:param name="pageTitle" value="Simples CRUD" />
+
+	<ui:define name="content">
+
+		<h:form id="formListaVeterinarios">
+
+			<p:commandButton icon="pi pi-plus-circle" styleClass="imgButton"
+				action="#{veterinarioBean.novoVeterinario}" title="Incluir" />
+			<br />
+			<br />
+
+			<p:dataTable id="tableVeterinarios" var="veterinario"
+				value="#{veterinarioBean.listarVeterinarios}"
+				emptyMessage="Nenhum veterinario cadastrado."
+				style="width:500px;text-align:center;">
+
+				<f:facet name="header">Veterinarios cadastrados</f:facet>
+
+				<p:column headerText="Nome">#{veterinario.nome}</p:column>
+				<p:column headerText="Telefone">#{veterinario.telefone}</p:column>
+				<p:column headerText="Email">#{veterinario.email}</p:column>
+
+				<p:column headerText="Ações">
+					<p:commandButton icon="pi pi-trash" styleClass="imgButton"
+						title="Excluir" action="#{veterinarioBean.confirmarExclusao(veterinario)}">
+					</p:commandButton>
+
+					<p:commandButton title="Alterar" icon="pi pi-pencil"
+						styleClass="imgButton" action="#{veterinarioBean.editarVeterinario(veterinario)}">
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+
+			<a:status />
+
+			<p:commandButton value="Show Case"
+				action="/pages/showcase/homeShowCase" />
+			<br />
+			<br />
+		</h:form>
+
+		<ui:include src="dlgVeterinario.xhtml" />
+	</ui:define>
+</ui:composition>

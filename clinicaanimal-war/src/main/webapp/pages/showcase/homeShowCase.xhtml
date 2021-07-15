@@ -1,0 +1,70 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	template="/WEB-INF/layout/template.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:a="http://java.sun.com/jsf/composite/components">
+
+	<ui:param name="pageTitle"
+		value="JavaServer Faces com PrimeFaces, CDI e WildFly" />
+
+	<ui:define name="content">
+
+		<h:form id="formShowCase" styleClass="inoutput">
+			<div style="margin-left: 150px;" class="inoutput">
+				<h:panelGrid style="text-align:left;">
+					<h:panelGrid cellpadding="0" cellspacing="0">
+						<h:panelGrid style="margin-right:10px;color:gray;" cellpadding="0"
+							cellspacing="0">
+							<h:panelGroup>
+								<h:outputText value="TUTOR:" style="color:gray;" />
+								<p:commandLink value="Simples CRUD" styleClass="sel_link"
+									style="color:#CD6600;" action="#{tutorBean.listarTutores}" />
+							</h:panelGroup>
+						</h:panelGrid>
+
+						<h:panelGrid style="margin-right:10px;color:gray;" cellpadding="0"
+							cellspacing="0">
+							<h:panelGroup>
+								<h:outputText value="ANIMAL:" style="color:gray;" />
+								<p:commandLink value="Simples CRUD" styleClass="sel_link"
+									style="color:#CD6600;" action="#{animalBean.listarAnimais}" />
+							</h:panelGroup>
+						</h:panelGrid>
+
+						<h:panelGrid style="margin-right:10px;color:gray;" cellpadding="0"
+							cellspacing="0">
+							<h:panelGroup>
+								<h:outputText value="VETERINÁRIO:" style="color:gray;" />
+								<p:commandLink value="Simples CRUD" styleClass="sel_link"
+									style="color:#CD6600;"
+									action="#{veterinarioBean.listarVeterinarios}" />
+							</h:panelGroup>
+						</h:panelGrid>
+
+						<h:panelGrid style="margin-right:10px;color:gray;" cellpadding="0"
+							cellspacing="0">
+							<h:panelGroup>
+								<h:outputText value="CONSULTA:" style="color:gray;" />
+								<p:commandLink value="Simples CRUD" styleClass="sel_link"
+									style="color:#CD6600;" action="#{consultaBean.listarConsultas}" />
+							</h:panelGroup>
+						</h:panelGrid>
+					</h:panelGrid>
+					<br />
+				</h:panelGrid>
+			</div>
+			<br />
+
+			<p:commandButton icon="pi pi-home"
+				action="/pages/home/homePage?faces-redirect=true" />
+			<br />
+			<br />
+		</h:form>
+
+		<!-- Utilize a progressBar na pagina por fora de qualquer form -->
+		<a:progressbar widgetVar="progressbar" />
+
+	</ui:define>
+</ui:composition>

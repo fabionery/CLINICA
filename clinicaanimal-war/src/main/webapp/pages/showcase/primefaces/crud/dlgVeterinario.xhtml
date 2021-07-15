@@ -1,0 +1,49 @@
+<ui:fragment xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:a="http://java.sun.com/jsf/composite/components">
+
+	<p:dialog widgetVar="dlgVeterinario"
+		header="FORMULÁRIO DE INCLUSÃO DE VETERINÁRIOS" modal="true"
+		hideEffect="explode" resizable="false" appendTo="@(body)"
+		closeOnEscape="true">
+
+		<h:form id="formVeterinario">
+			<p:panel id="panel">
+				<p:focus context="panel" />
+				<h:panelGrid style="text-align:left;" columns="2">
+					<h:outputLabel value="Nome:" />
+					<p:inputText label="Nome"
+						value="#{veterinarioBean.veterinario.nome}" required="true" />
+
+					<h:outputLabel value="Telefone:" />
+					<p:inputText label="Telefone" maxlength="12" size="12"
+						value="#{veterinarioBean.veterinario.telefone}" required="true" />
+
+					<h:outputLabel value="Email:" />
+					<p:inputText label="Email"
+						value="#{veterinarioBean.veterinario.email}" required="true" />
+				</h:panelGrid>
+
+				<f:facet name="footer">
+					<div style="text-align: right !important; width: 100%;">
+						<div style="column-count: 2;">
+							<a:status />
+							<h:panelGroup>
+								<p:commandButton icon="pi pi-save" title="Salvar"
+									styleClass="imgButton"
+									action="#{veterinarioBean.salvarVeterinario}" />
+								<p:spacer width="2" />
+								<p:commandButton icon="pi pi-times" styleClass="imgButton"
+									immediate="true" title="Cancelar"
+									onclick="PF('dlgVeterinario').hide()" />
+							</h:panelGroup>
+						</div>
+					</div>
+				</f:facet>
+			</p:panel>
+		</h:form>
+	</p:dialog>
+</ui:fragment>
